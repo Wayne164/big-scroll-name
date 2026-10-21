@@ -3,15 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>sb钟安华</title>
+  <title>bro正在经历死亡星期三</title>
   <style>
+    :root {
+      --bg1: #050816;
+      --bg2: #101827;
+      --red: #ff5961;
+      --orange: #ff8a5b;
+      --white: #f5f7ff;
+      --shadow: rgba(255, 89, 97, 0.7);
+    }
+
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #0b1020;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
       font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
@@ -19,25 +28,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       background:
-        radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 35%),
-        linear-gradient(180deg, #0b1020 0%, #111827 100%);
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,0.08), transparent 25%),
+        linear-gradient(180deg, #050816 0%, #0d1324 100%);
     }
 
-    .scene {
+    .screen {
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
       position: relative;
-      padding: 20px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 10%),
+        linear-gradient(180deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 10%);
+      background-size: 24px 24px, 24px 24px;
     }
 
     .ticker {
-      position: relative;
-      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 200%;
       white-space: nowrap;
       overflow: hidden;
       mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
@@ -47,73 +60,74 @@
     .ticker-track {
       display: inline-block;
       padding-left: 100%;
-      animation: scrollText 12s linear infinite;
+      animation: scroll 16s linear infinite;
     }
 
     .word {
       display: inline-block;
+      margin-right: 2rem;
       font-weight: 900;
-      font-size: clamp(3.2rem, 12vw, 12rem);
-      letter-spacing: 0.05em;
+      font-size: clamp(3rem, 12vw, 16rem);
       line-height: 1;
-      color: #f9fafb;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      filter: drop-shadow(0 0 14px rgba(255, 89, 97, 0.6));
+      transform: scaleY(1.1);
+    }
+
+    .red {
+      color: var(--red);
       text-shadow:
-        0 0 10px rgba(255, 255, 255, 0.3),
-        0 0 18px rgba(255, 90, 90, 0.6),
-        0 0 26px rgba(255, 90, 90, 0.35);
-      transform: scaleY(1.08);
+        0 0 10px rgba(255, 89, 97, 0.8),
+        0 0 22px rgba(255, 89, 97, 0.6),
+        0 0 35px rgba(255, 89, 97, 0.3);
     }
 
-    .word.red {
-      color: #ff5a5f;
+    .orange {
+      color: var(--orange);
       text-shadow:
-        0 0 10px rgba(255, 90, 90, 0.6),
-        0 0 20px rgba(255, 90, 90, 0.5),
-        0 0 30px rgba(255, 90, 90, 0.25);
+        0 0 10px rgba(255, 138, 91, 0.8),
+        0 0 20px rgba(255, 138, 91, 0.6),
+        0 0 35px rgba(255, 138, 91, 0.25);
     }
 
-    .word.white {
-      color: #f4f7ff;
-    }
-
-    .word.blue {
-      color: #7dd3fc;
+    .white {
+      color: var(--white);
       text-shadow:
-        0 0 10px rgba(125, 211, 252, 0.7),
-        0 0 20px rgba(125, 211, 252, 0.4);
+        0 0 10px rgba(245,247,255,0.7),
+        0 0 18px rgba(245,247,255,0.4);
     }
 
-    @keyframes scrollText {
+    @keyframes scroll {
       from { transform: translateX(0); }
-      to { transform: translateX(-100%); }
+      to { transform: translateX(-50%); }
     }
 
-    @media (max-width: 480px) {
-      .scene {
-        padding: 12px;
+    @media (max-width: 768px) {
+      .word {
+        margin-right: 1.2rem;
+        letter-spacing: 0.04em;
       }
-
       .ticker {
         mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-      }
-
-      .word {
-        letter-spacing: 0.02em;
       }
     }
   </style>
 </head>
 <body>
-  <div class="scene">
-    <div class="ticker" aria-label="滚动文字">
+  <div class="screen">
+    <div class="ticker" aria-label="滚动字幕">
       <div class="ticker-track">
-        <span class="word red">sb</span>
-        <span class="word white">钟安华</span>
-        <span class="word blue">sb</span>
-        <span class="word white">钟安华</span>
-        <span class="word red">sb</span>
-        <span class="word white">钟安华</span>
+        <span class="word red">bro</span>
+        <span class="word white">正在经历</span>
+        <span class="word orange">死亡星期三</span>
+        <span class="word red">bro</span>
+        <span class="word white">正在经历</span>
+        <span class="word orange">死亡星期三</span>
+        <span class="word red">bro</span>
+        <span class="word white">正在经历</span>
+        <span class="word orange">死亡星期三</span>
       </div>
     </div>
   </div>
